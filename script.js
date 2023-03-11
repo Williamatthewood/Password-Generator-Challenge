@@ -31,7 +31,7 @@ function generatePassword(){
     alert("You must input an integer to generate a password.");
     return;
   } else if(passwordLength < 8 || passwordLength > 128){ //checks if passwordLenth is in the required range
-    alert("Invalid input. You must input an integer between 8 and 128 inclusive.");
+    alert("Invalid input. You must input a whole number between 8 and 128 inclusive.");
     return;
   }
   var containsLowercase = window.confirm("Include lowercase letters in your password?");
