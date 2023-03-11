@@ -1,9 +1,9 @@
 // Assignment code here
 var passwordLength = 0;
-var lowercase = "abcdefghijklmnopqrstuvwxyz ".split("");
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ".split("");
-var numeric = "1234567890 ".split("");
-var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~ ".split("");
+var lowercase = "abcdefghijklmnopqrstuvwxyz".split("");
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var numeric = "1234567890".split("");
+var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -40,19 +40,23 @@ function generatePassword(){
   var containsSpecials = window.confirm("Include special characters in your password?");
 
   if (containsLowercase && containsUppercase && containsNumbers && containsSpecials){
-    for (let i = 1; i < passwordLength; i++) {
-      if (lowercase.includes(password[i-1])){
-        passwordArray.push(uppercase[Math.floor(Math.random()* uppercase.length)]);
-      }
-      else if (uppercase.includes(password[i-1])){
-        passwordArray.push(numeric[Math.floor(Math.random()* numeric.length)]);
-      }
-      else if (numeric.includes(password[i-1])){
-        passwordArray.push(specialChar[Math.floor(Math.random() * specialChar.length)]);
-      }
-      else {
-        passwordArray.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
-      }
+    for (let i = 0; i < passwordLength; i++) {
+      passwordArray.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+      // if (passwordArray === []){
+      //   passwordArray.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+      // }
+      // else if (lowercase.includes(password[i - 1])){
+      //   passwordArray.push(uppercase[Math.floor(Math.random()* uppercase.length)]);
+      // }
+      // else if (uppercase.includes(password[i - 1])){
+      //   passwordArray.push(numeric[Math.floor(Math.random()* numeric.length)]);
+      // }
+      // else if (numeric.includes(password[i - 1])){
+      //   passwordArray.push(specialChar[Math.floor(Math.random() * specialChar.length)]);
+      // }
+      // else {
+      //   passwordArray.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+      // }
       
     }
   } 
@@ -102,6 +106,8 @@ function generatePassword(){
     console.log("nothing was selected");
   }
 
+  var password = passwordArray.join("");
+  return password;
 }
 
 // Add event listener to generate button
