@@ -21,9 +21,10 @@ function writePassword() {
 
 function generatePassword(){
   passwordLength = parseInt(window.prompt("Enter desired password length (must be between 8 - 128 characters): "));
-  var password = "";
+  var passwordArray = [];
   
-  var lowerIndex = Math.floor(Math.random() * lowercase.length);
+  // var lowerIndex = Math.floor(Math.random() * lowercase.length);
+
 
   //cancel the function if user presses cancel or inputs a non-integer
   if (!passwordLength){
@@ -40,11 +41,66 @@ function generatePassword(){
 
   if (containsLowercase && containsUppercase && containsNumbers && containsSpecials){
     for (let i = 1; i < passwordLength; i++) {
-      
+      if (lowercase.includes(password[i-1])){
+        passwordArray.push(uppercase[Math.floor(Math.random()* uppercase.length)]);
+      }
+      else if (uppercase.includes(password[i-1])){
+        passwordArray.push(numeric[Math.floor(Math.random()* numeric.length)]);
+      }
+      else if (numeric.includes(password[i-1])){
+        passwordArray.push(specialChar[Math.floor(Math.random() * specialChar.length)]);
+      }
+      else {
+        passwordArray.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+      }
       
     }
+  } 
+  else if(containsLowercase && containsUppercase && containsNumbers) {
+    console.log("lower, upper, and numbers selected");
   }
-
+  else if (containsLowercase && containsUppercase && containsSpecials){
+    console.log("lower, upper, and specials selected");
+  }
+  else if (containsLowercase && containsNumbers && containsSpecials){
+    console.log("lower, numbers, and specials selected");
+  }
+  else if (containsUppercase && containsNumbers && containsSpecials){
+    console.log("upper, numbers, and specials selected");
+  }
+  else if (containsLowercase && containsUppercase){
+    console.log("lower and upper selected");
+  }
+  else if (containsLowercase && containsNumbers){
+    console.log("lower and numbers selected");
+  }
+  else if (containsLowercase && containsSpecials){
+    console.log("lower and specials selected");
+  }
+  else if (containsUppercase && containsNumbers){
+    console.log("upper and numbers selected");
+  }
+  else if(containsUppercase && containsSpecials){
+    console.log("upper and specials selected");
+  }
+  else if(containsNumbers && containsSpecials){
+    console.log("numbers and specials selected");
+  }
+  else if(containsLowercase){
+    console.log("lower selected");
+  }
+  else if(containsUppercase){
+    console.log("upper selected");
+  }
+  else if(containsNumbers){
+    console.log("numbers selected");
+  }
+  else if(containsSpecials){
+    console.log("specials selected");
+  }
+  else {
+    console.log("nothing was selected");
+  }
 
 }
 
